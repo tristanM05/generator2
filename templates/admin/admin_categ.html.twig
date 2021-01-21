@@ -1,0 +1,54 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="container alert alert-success text-center mt-3">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container">
+    <h1 class="text-center text-uppercase my-5 lol">Les categories</h1>
+    <img class="img" src="/images/phil.jpg" alt="">
+    <div class="my-3">
+        <a href="{{path('createCateg')}}" class="btn btn-info">Ajoutez une catégorie</a>
+    </div>
+    <div class="card p-3">
+        <table class="table table-hover text-center">
+            <tr class="table-primary">
+                <td>Titre</td>
+                <td>Actions</td>
+            </tr>
+            {% for c in categ %}
+                <tr>
+                    <td><a id="aCat" href="{{path('admin_name',{'id': c.id})}}"><strong class="text-uppercase">{{c.name}}</strong></a></td>
+                    <td>
+                        <a href="{{path('createName',{'id': c.id})}}" class="btn btn-success"><i class="far fa-plus-square"></i></a>
+                        <a  href="{{path('modifCateg',{'id': c.id})}}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <form method="POST" style="display:inline-block" action="{{path('supCateg',{'id': c.id})}}">
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Confirmer la suppresion de la catégorie')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ c.id)}}">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        const lol = document.querySelector('.lol');
+        const img = document.querySelector('.img');
+
+        lol.addEventListener('click', () => {
+            lol.style.display = "none";
+            img.style.display = "block";
+        })
+    </script>
+{% endblock %}

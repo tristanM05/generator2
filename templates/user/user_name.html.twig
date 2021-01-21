@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{Hello AdminNameController!}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+<div class="container alert alert-success text-center mt-3">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container">
+<a href="{{path('homepage')}}" class="btn btn-success mb-3 mt-5"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+    <div class="card p-3 cardName">
+        <table class="table table-hover text-center">
+            <tr class="table-primary">
+                <td>Titre</td>
+                <td>Séléction</td>
+            </tr>
+                {% for n in categorie %}
+                    {% for names in n.names %}
+                <tr>
+                    <td><a id="aCat" href=""><strong class="text-uppercase">{{names.title}}</strong></a></td>
+                    <td>
+                        <a href="{{path('setActiveName',{id:names.id})}}" class="js-premium">
+                            <span>
+                                {% if names.isActive == true %}
+                                    <i class="fas fa-check text-success fa-2x"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger fa-2x"></i>
+                                {% endif %}
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                    {% endfor %}
+                {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+            function onClickPremium(event){
+            event.preventDefault();
+
+            const url = this.href;
+            const icon = this.querySelector('i');
+
+            axios.get(url).then(function(response){
+                
+                if(icon.classList.contains('fa-check')) {
+                    icon.classList.replace('fa-check', 'fa-times');
+                    icon.classList.replace('text-success', 'text-danger');
+                }else {
+                    icon.classList.replace('fa-times', 'fa-check')
+                    icon.classList.replace('text-danger','text-success');
+                }
+            }).catch(function(error){
+                if(error.response.status === 403){
+                    window.alert("Une erreur est survenue , merci de réessayer ultérieurement")
+                }
+            })
+        }
+
+        document.querySelectorAll('a.js-premium').forEach(function(link){
+            link.addEventListener('click', onClickPremium);
+        })
+    </script>
+    </script>
+{% endblock %}

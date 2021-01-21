@@ -1,0 +1,19 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Membres{% endblock %}
+{% block monTitre %}Créer un nouveau membre{% endblock %}
+{% block body %}
+    <div class="container">
+    <a href="{{path('admin_user')}}" class="btn btn-success mt-5"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+        <div class="card mt-3 cardUser">
+        <div class="card-header text-uppercase text-center titleCard"><p>Ajouter un nouvel utilisateur</p></div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+            </div>
+            <div class="card-footer">
+                <input type="submit" class="btn btn-info btn-block mt-2 btn1" value="Valider">
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Membres{% endblock %}
+
+{% block monTitre %}Les Membres{% endblock %}
+
+{% block body %}
+<div class="container">
+    <a href="{{path('admin_categ')}}" class="btn btn-success mt-5 mb-3"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+    <a href="{{path('createUser')}}" class="btn btn-info mt-5 mb-3">Ajoutez</a>
+    {% for message in app.flashes('success') %}
+    <div class="container alert alert-success text-center">
+        {{message}}
+    </div>
+    {% endfor %}
+    <table class="table table-hover text-center">
+        <tr class="table-primary">
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Email</td>
+            <td>Membre depuis le</td>
+            <td>Action</td>
+        </tr>
+
+        {% for u in user %}
+        <tr class="user">
+            <td><strong>{{u.name}}</strong></td>
+            <td>{{u.lastname}}</td>
+            <td>{{u.mail}}</td>
+            <td>{{u.createdAt|date("d/m/Y")}}</td>
+            <td>
+                <form method="POST" style="display:inline-block" action="{{path('supUser',{'id':u.id})}}"
+                    onsubmit="return confirm('Confirmer la suppression')">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ u.id)}}">
+                    <input type="submit" class="btn btn-danger" value="supprimer">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="container alert alert-success text-center mt-3">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container">
+    <div class="card cardHome">
+        <p >Sélectionnez entre 1 et 5 catégories et lancez un tirage au sort !</p>
+    </div>
+    <div>
+        <a href="{{path('tirage')}}" class="btn btn-info mb-2 mt-5 text-white" data-toggle="modal" data-target="#tirage">Lancer un tirage au sort !</a>
+    </div>
+    <i class="fas fa-info-circle mb-3"> Pensez a actualiser après la séléction de vos catégories et avant le lancement du tirage.</i>
+    <div class="card mb-5">
+        <div class="card-header">
+            <h2 class="text-center text-uppercase titleCard">Les categories</h2>
+        </div>
+        <table class="table table-hover text-center  p-3">
+            <tr class="table-primary">
+                <td>Titre</td>
+                <td>Séléction</td>
+            </tr>
+            {% for c in categ %}
+                <tr>
+                    <td><a id="aCat" href="{{path('user_name',{'id': c.id})}}"><strong class="text-uppercase">{{c.name}}</strong></a></td>
+                    <td>
+                        <a href="{{path('setActive',{id:c.id})}}" class="js-premium">
+                            <span>
+                                {% if c.isActive == true %}
+                                    <i class="fas fa-check text-success fa-2x"></i>
+                                {% else %}
+                                    <i class="fas fa-times text-danger fa-2x"></i>
+                                {% endif %}
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% include "partials/tirageModal.html.twig" %}
+{% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+            function onClickPremium(event){
+            event.preventDefault();
+
+            const url = this.href;
+            const icon = this.querySelector('i');
+
+            axios.get(url).then(function(response){
+                
+                if(icon.classList.contains('fa-check')) {
+                    icon.classList.replace('fa-check', 'fa-times');
+                    icon.classList.replace('text-success', 'text-danger');
+                }else {
+                    icon.classList.replace('fa-times', 'fa-check')
+                    icon.classList.replace('text-danger','text-success');
+                }
+            }).catch(function(error){
+                if(error.response.status === 403){
+                    window.alert("Une erreur est survenue , merci de réessayer ultérieurement")
+                }
+            })
+        }
+
+        document.querySelectorAll('a.js-premium').forEach(function(link){
+            link.addEventListener('click', onClickPremium);
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,213 @@
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #edf6f99d;
+    
+}
+
+.card{
+    background-color:  #edf6f9;
+    border-radius: 20px;
+    
+}
+.cardName{
+    margin-bottom: 200px;
+}
+
+ul{
+    list-style-type: none;
+}
+.img{
+    display: none;
+    width: 250px;
+    height: 300px;
+    margin: auto;
+}
+.lol{
+    cursor: pointer;
+}
+.btn-info{
+    background-color: #3f3d56 !important;
+}
+/**************************** LOGIN ***************************/
+
+/**************************** LOGIN ***************************/
+/**************************** footer ***************************/
+
+#footer{
+    background-color:#3f3d56;
+}
+#txtFoot{
+    padding: 13px;
+    margin: 0;
+    color: white;
+}
+
+/**************************** footer ***************************/
+
+/**************************** banner ***************************/
+
+#banner2{
+width: 100px;
+height: 100px;
+}
+#img{
+    background-color: #3f3d56 ;
+}
+nav{
+    padding-top: 0 !important;
+    padding-left: 15px;
+}
+.itNav a:hover{
+    color: #138496 !important;
+    transition: 0.3s;
+}
+
+/**************************** banner ***************************/
+
+/**************************** admin log ***************************/
+
+.cardLog{
+    margin-top: 60px;
+}
+.ban{
+    width: 100%;
+    height: 160px;
+}
+#h1Log{
+    margin-top: 60px;
+    color: #006d77;
+    font-weight: bold;
+}
+.titleCard{
+    /* color: #006d77; */
+    color: black;
+    font-weight: bold;
+}
+
+/**************************** admin log ***************************/
+
+/**************************** admin categ ***************************/
+
+#aCat{
+    color: black;
+}
+
+.cardCateg p {
+    font-size: 45px;
+    text-transform: uppercase;
+}
+
+.cardCateg .btn1{
+    font-size: 30px;
+}
+
+/**************************** admin categ ***************************/
+/**************************** admin user ***************************/
+/* .user{
+    color: white;
+} */
+.btn1{
+    font-size: 30px;
+}
+.cardUser p{
+    font-size: 45px;
+}
+/**************************** admin user ***************************/
+
+/*******************************************************************/
+/********************************** USER ***************************/
+/*******************************************************************/
+
+/**************************** nav ***************************/
+#navUser{
+    background-color:#3f3d56;
+}
+
+.navadmin{
+    background-color: #3f3d56 ;
+}
+/**************************** nav ***************************/
+
+
+/*******************************************************************/
+/********************************** USER ***************************/
+/*******************************************************************/
+
+/**************************** HOME ***************************/
+
+.cardHome{
+    margin-top: 30px;
+    text-align: center;
+}
+.cardHome p{
+    margin: 0;
+    /* color: #006d77; */
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px;
+}
+
+/**************************** HOME ***************************/
+
+/**************************** HOME MODAL ***************************/
+
+#tirageCat{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    color: #006d77;
+}
+
+
+/**************************** HOME MODAL ***************************/
+
+/**************************** ASSISTANCE ***************************/
+
+.assist{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 19px;
+    color: #006d77;
+    font-weight: 700;
+}
+.cardAssist{
+    margin-bottom: 169px;
+}
+
+/**************************** ASSISTANCE ***************************/
+
+/* 
+*****************************************************************************
+******************************** MEDIA QUERIES ******************************
+*****************************************************************************
+*/
+@media (max-width: 450px){
+    .btnNav{
+        color: white;
+    }
+    /**** login ****/
+    #imgLog{
+        display: none;
+    }
+    #h1Log{
+        font-size: 25px;
+    }
+    .ban{
+        height: 100px;
+    }
+    .cardLog h2{
+        font-size: 25px;
+    }
+    #log2{
+        padding-top: 0 !important;
+    }
+    /**** login ****/
+    /**** home ****/
+    .titleCard{
+        font-size: 25px;
+    }   
+     /**** home ****/
+}

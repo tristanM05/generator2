@@ -1,0 +1,27 @@
+
+<nav class="navbar navbar-expand-lg" id="navUser">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse itNav2" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto p-2">
+			{% if app.user %}
+			<li class="nav-item itNav">
+				<a class="nav-link text-white mr-3" href="{{path('homepage')}}">Acceuil</a>
+			</li>
+			<li class="nav-item itNav">
+				<a class="nav-link text-white mr-3" href="{{path('user_info')}}">Modifier mes infos</a>
+			</li>
+			<li class="nav-item itNav">
+				<a class="nav-link text-white mr-3" href="{{path('assistance')}}">Assistance</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-danger" id="decoUser" href="{{path('user_logout')}}">Deconnexion</a>
+			</li>
+			{% else %}
+			{% endif %}
+		</ul 
+	</div> 
+</nav>

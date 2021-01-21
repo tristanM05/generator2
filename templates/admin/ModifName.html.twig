@@ -1,0 +1,25 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="container alert alert-success text-center mt-3">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container">
+    <a href="{{path('admin_categ')}}" class="btn btn-success my-5"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+    <div class="card cardCateg">
+        <div class="card-header">
+            <p class="text-center">Ajouter un nouveau nom</p>
+        </div>
+            <div class="card-body">
+                {{form_start(form)}}
+                {{form_row(form.title)}}
+            </div>
+            <div class="card-footer text-center">
+                    <input id="btn" type="submit" class="btn btn-primary btn-block" value="Valider">
+                {{form_end(form)}}
+            </div>
+    </div>
+</div>
+{% endblock %}
