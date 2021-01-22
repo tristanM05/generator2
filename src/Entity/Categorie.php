@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Service\RandService;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -34,14 +33,10 @@ class Categorie
      */
     private $isActive;
 
-    public function getNameRand(RandService $rand){
-        return $rand->getRand();
-    }
-
-    public function __toString()
-    {
-        return $this->name;
-    }
+    // public function __toString()
+    // {
+    //     return $this->name;
+    // }
 
     public function __construct()
     {
