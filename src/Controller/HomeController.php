@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Categorie;
 use App\Repository\CategorieRepository;
-use App\Repository\NameRepository;
 use App\Service\RandService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,13 +20,17 @@ class HomeController extends AbstractController
     {
         $categ = $repo->findAll();
         $categ2 = $repo->findBy(['isActive' => 1]);
+        $finalCategories = [];
         foreach($categ2 as $categRand){
-            $nameRand = $rand->getRandomNameFromCategoryNames($categRand);
+            $finalCategories[] = [
+                'category' => $categRand->getName(),
+                'nameRand' => $rand->getRandomNameFromCategoryNames($categRand)
+            ];
         }
         return $this->render('home.html.twig', [
             "categ" => $categ,
             "categ2" => $categ2,
-            "nameRand" => $nameRand,
+            'finalCategories' => $finalCategories
         ]);
     }
 

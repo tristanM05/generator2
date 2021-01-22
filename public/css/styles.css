@@ -158,9 +158,17 @@ nav{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
-    color: #006d77;
+    color: #3f3d56;
 }
-
+#tirageName{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    color: orange;
+}
+.modal-title{
+    font-size: 25px !important;
+}
 
 /**************************** HOME MODAL ***************************/
 

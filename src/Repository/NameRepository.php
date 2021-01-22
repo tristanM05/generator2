@@ -23,21 +23,21 @@ class NameRepository extends ServiceEntityRepository
     //  * @return Name[] Returns an array of Name objects
     //  */
     
-    public function nameRand($categorie)
-    {
-        return $this->createQueryBuilder('n')
-            ->select('n','c')
-            ->join('n.categorie', 'c')
-            ->where('n.isActive = :1')
-            ->andWhere('n.categorie = :categorie')
-            ->orderBy('rand')
-            ->setParameter('1', 1)
-            ->setParameter('categorie', $categorie)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    // public function nameRand($categorie)
+    // {
+    //     return $this->createQueryBuilder('n')
+    //         ->select('n','c')
+    //         ->join('n.categorie', 'c')
+    //         ->where('n.isActive = :1')
+    //         ->andWhere('n.categorie = :categorie')
+    //         ->orderBy('rand')
+    //         ->setParameter('1', 1)
+    //         ->setParameter('categorie', $categorie)
+    //         ->setMaxResults(1)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
     
 
     /*
