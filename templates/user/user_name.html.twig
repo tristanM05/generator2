@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{Hello AdminNameController!}{% endblock %}
+{% block title %}Liste des noms{% endblock %}
 
 {% block body %}
     {% for message in app.flashes('success') %}
@@ -9,7 +9,7 @@
 </div>
 {% endfor %}
 <div class="container">
-<a href="{{path('homepage')}}" class="btn btn-success mb-3 mt-5"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+<a href="{{path('homepage')}}" class="btn btn-info mb-3 mt-5"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
     <div class="card p-3 cardName">
         <table class="table table-hover text-center">
             <tr class="table-primary">

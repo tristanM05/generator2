@@ -29,15 +29,6 @@ class ContactController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $attachment = $form->get('attachment')->getData();
-            foreach($attachment as $attach){
-                $fichier = md5(uniqid()) . '.' . $attach->guessExtension();
-                $attach->move(
-                    $this->getParameter('attachment_directory'),
-                    $fichier
-                );
-            }
-
             $message = (new TemplatedEmail())
             ->from($mail)
             ->to('nono@mail.fr')
@@ -47,8 +38,7 @@ class ContactController extends AbstractController
             Prenom: $firstname<br>
             Email: $mail<br>
             Message: $messageContact
-            </p>")
-            ->attachFromPath($this->getParameter('attachment_directory') . '/' . $fichier);
+            </p>");
 
             $mailer->send($message);
 
@@ -66,11 +56,9 @@ class ContactController extends AbstractController
                         <br>
                         <br>
                         (ce message est automatique, merci de ne pas y répondre.)
-                        </p>")
-            ->attachFromPath($this->getParameter('attachment_directory') . '/' . $fichier);
+                        </p>");
             $mailer->send($message3);
 
-            unlink($this->getParameter('attachment_directory').'/'.$fichier);
 
             $this->addFlash('success', 'Votre message a bien été envoyé');
             return $this->redirectToRoute("assistance");

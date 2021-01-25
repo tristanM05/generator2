@@ -20,18 +20,7 @@ class ContactType extends AbstractType
                     'placeholder' => 'Votre message',
                     'rows' => 7
                 ]
-            ])
-            ->add('attachment', FileType::class, [
-                'label' => false,
-                'multiple' => true,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => "Ajouter une pièce jointe. (optionel)"
-                ]
-
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

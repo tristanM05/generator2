@@ -1,6 +1,6 @@
 let $colletionHolder;
 
-let $addNameButton = $('<button type="button" class="add_name_link btn btn-primary">Ajouter un nom</button>');
+let $addNameButton = $('<button type="button" class="add_name_link btn btn-info">Ajouter un nom</button>');
 let $newLinkLi = $('<li></li>').append($addNameButton);
 
 $(document).ready(function () {
